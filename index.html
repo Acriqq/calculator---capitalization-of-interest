@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Kacper Świętek 3k">
+    <title>Kapitalizacja odsetek</title>
+    <link rel="shortcut icon" type="image/png" href="img/calc.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/CountInvestment.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
+</head>
+<body>
+    <div class="container">
+        <button onclick="scrollDown()" class="btn-block btn-primary py-4 margin30">
+            <h3 class="head-text position-relative">Kalkulator lokat bankowych<span class="position-absolute"></span>
+            </h3>
+        </button>
+        <div class="calc">
+            <form class="row">
+                <div class="col mb-4">
+                    <label class="col-sm pad0 font-Montserrat">Wpłata jednorazowa:</label>
+                    <input id="amountPaidIn" oninput="countInvestment()"
+                        class="inputrange form-control margin-left-25 font-Montserrat" type="number"
+                        placeholder="Wprowadź kwotę">
+                    <span class="font-Montserrat">zł</span>
+                </div>
+            </form>
+            <form class="row">
+                <div class="col bordertop">
+                    <p class="font-Montserrat">Liczba miesięcy:</p>
+                    <input type="range" class="custom-range" name="amountRange" min="0" max="420" value="48"
+                        oninput="this.form.amountInput.value=this.value,countInvestment()" />
+                    <input id="numberOfMonths" class="inputrange form-control margin-left-25 font-Montserrat"
+                        name="amountInput" type="number" min="0" max="420" value="48"
+                        oninput="this.form.amountRange.value=this.value,countInvestment()" />
+                    <span class="font-Montserrat">miesięcy</span>
+                </div>
+            </form>
+            <form class="row">
+                <div class="col bordertop">
+                    <p class="font-Montserrat">Oprocentowanie:</p>
+                    <input type="range" class="custom-range" name="amountRange" step="0.001" min="0.001" max="90"
+                        value="7.001" oninput="this.form.amountInput.value=this.value,countInvestment()" />
+                    <input id="interest" class="inputrange form-control margin-left-25 font-Montserrat" type="number"
+                        name="amountInput" step="0.001" min="0.001" max="90" value="4.5"
+                        oninput="this.form.amountRange.value=this.value,countInvestment()" />
+                    <span>%</span>
+                </div>
+            </form>
+            <div class="row bordertop">
+                <div class="col-sm font-Montserrat">Kapitalizacja odsetek:</div>
+                <div class="">
+                    <select oninput="countInvestment()" id="typeOfCapitalization"
+                        class="custom-select margin-left-25 font-Montserrat">
+                        <option value="1">Roczna</option>
+                        <option value="2">Półroczna</option>
+                        <option value="4">Kwartalna</option>
+                        <option value="12">Miesięczna</option>
+                        <option value="366">Dzienna</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row bordertop">
+                <div class="col-sm font-Montserrat">Podatek Belka (19%):</div>
+                <div class="">
+                    <select oninput="countInvestment()" id="tax" class="custom-select margin-left-25 font-Montserrat">
+                        <option value="">Nie</option>
+                        <option value="0.19">Tak</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row bordertop">
+                <label class="textalign col-sm font-Montserrat">Wpłacona kwota:</label>
+                <p id="amountpaid" class="font-weight-bold head-text1"></p>
+            </div>
+            <div class="row bordertop">
+                <label class="textalign col-sm font-Montserrat">Odsetki (zysk):</label>
+                <p id="interestValue" class="font-weight-bold head-text1"></p>
+            </div>
+            <div class="row bordertop">
+                <label class="textalign col-sm font-Montserrat">Kwota podatku:</label>
+                <p id="TheAmountOfTax" class="font-weight-bold head-text1"></p>
+            </div>
+            <div class="row marbot bg-primary">
+                <label class="textalign col-sm padtop text-white font-Montserrat head-text1 ">Suma oszczędności:</label>
+                <p id="TheSumOfSavings" class="font-weight-bold med text-white head-text1"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div.calc").slideToggle("slow");
+            });
+        });
+    </script>
+</body>
+</html>

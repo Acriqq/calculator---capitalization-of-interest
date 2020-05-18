@@ -1,0 +1,158 @@
+.container {
+    max-width: 54%;
+    height: 1000px;
+}
+
+.head-text {
+
+    letter-spacing: 7px;
+
+}
+
+.head-text1 {
+    letter-spacing: 1px;
+
+}
+
+h3>span {
+    animation: reveal 2.5s linear;
+    background-color: #007bff;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+
+@keyframes reveal {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
+}
+
+.font-Montserrat {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+}
+
+.margin-left-25 {
+    margin-left: 25px;
+}
+
+.calc {
+    margin-top: 2%;
+    display: none;
+}
+
+.inputcolor {
+    color: dodgerblue;
+}
+
+.btn-primary {
+    transition: 0.3s ease-in;
+}
+
+.btn-block {
+    border: 0
+}
+
+.bg-primary:hover {
+    background-color: #0069d9 !important;
+}
+
+.custom-range {
+    width: 47.5%;
+}
+
+.inputrange {
+    width: 35%;
+}
+
+.pad0 {
+    padding: 0px;
+
+}
+
+.bordertop {
+    border-top: 1px solid #e7e7e7;
+    padding-top: 2.1%;
+    padding-bottom: 2.1%;
+}
+
+.form-control {
+    display: inline;
+
+}
+
+.col-sm {
+    max-width: 48.1%;
+
+}
+
+.absolute {
+    position: absolute;
+    padding: 10px 0;
+    padding-left: 5px;
+}
+
+.textalign {
+    text-align: right;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.padtop {
+    padding-top: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.marbot {
+    margin-bottom: 50px;
+}
+
+.med {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+input[type=range]::-moz-range-progress {
+    background-color: #007bff;
+    height: 7px;
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #007bff;
+    border-radius: 10px;
+    height: 7px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #007bff;
+}
+
+.margin30 {
+    margin-top: 34%;
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    .container {
+        max-width: 100%;
+    }
+}
